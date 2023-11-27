@@ -1,34 +1,32 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var words = new List<Word>
+        // Create a library of scriptures
+        var scriptureLibrary = new ScriptureLibrary();
+
+        if (scriptureLibrary != null)
         {
-            new Word("In"),
-            new Word("the"),
-            new Word("beginning"),
-            new Word("God"),
-            new Word("created"),
-            new Word("the"),
-            new Word("heaven"),
-            new Word("and"),
-            new Word("the"),
-            new Word("earth"),
-        };
+            // Get a random scripture from the library
+            var scripture = scriptureLibrary.GetRandomScripture();
 
-        var reference = new Reference("Genesis", 1, 1);
-        var scripture = new Scripture(reference, words);
+            // Display original scripture
+            Console.WriteLine("Original Scripture:");
+            scripture.DisplayScripture();
 
-        // Display original scripture
-        Console.WriteLine("Original Scripture:");
-        scripture.DisplayScripture();
-
-        // Hide random words and display modified scripture
-        scripture.HideRandomWords(3);
-        Console.WriteLine("\nScripture after hiding random words:");
-        scripture.DisplayScripture();
+            // Hide random words and display modified scripture
+            scripture.HideRandomWords(3);
+            Console.WriteLine("\nScripture after hiding random words:");
+            scripture.DisplayScripture();
+        }
+        else
+        {
+            Console.WriteLine("Error: Unable to initialize scripture library.");
+        }
     }
 }
-   
+
+
