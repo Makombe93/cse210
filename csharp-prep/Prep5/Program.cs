@@ -1,48 +1,17 @@
 using System;
-
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        DisplayWelcomeMessage();
+        List<Shape> shapes = new List<Shape>();
 
-        string userName = PromptUserName();
-        int userNumber = PromptUserNumber();
+        shapes.Add(new Square("Red", 5));
+        shapes.Add(new Rectangle("Blue", 4, 6));
+        shapes.Add(new Circle("Green", 3));
 
-        int squaredNumber = SquareNumber(userNumber);
-
-        DisplayResult(userName, squaredNumber);
-    }
-
-    static void DisplayWelcomeMessage()
-    {
-        Console.WriteLine("Welcome to the program!");
-    }
-
-    static string PromptUserName()
-    {
-        Console.Write("Please enter your name: ");
-        string name = Console.ReadLine();
-
-        return name;
-    }
-
-    static int PromptUserNumber()
-    {
-        Console.Write("Please enter your favorite number: ");
-        int number = int.Parse(Console.ReadLine());
-
-        return number;
-    }
-
-    static int SquareNumber(int number)
-    {
-        int square = number * number;
-        return square;
-    }
-
-    static void DisplayResult(string name, int square)
-    {
-        Console.WriteLine($"{name}, the square of your number is {square}");
+        foreach (var shape in shapes)
+        {
+            Console.WriteLine($"Shape: {shape.GetColor()}, Area: {shape.GetArea()}");
+        }
     }
 }
